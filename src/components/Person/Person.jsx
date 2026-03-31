@@ -1,4 +1,5 @@
 import './Person.scss';
+import { getPartnerText } from '../../utils';
 
 export const Person = ({ person }) => (
   <section className="Person">
@@ -6,16 +7,6 @@ export const Person = ({ person }) => (
     {person.age !== undefined && (
       <p className="Person__age">I am {person.age}</p>
     )}
-    <p className="Person__partner">
-      {person.isMarried &&
-        person.sex === 'm' &&
-        `${person.partnerName} is my wife`}
-
-      {person.isMarried &&
-        person.sex === 'f' &&
-        `${person.partnerName} is my husband`}
-
-      {!person.isMarried && 'I am not married'}
-    </p>
+    <p className="Person__partner">{getPartnerText(person)}</p>
   </section>
 );
